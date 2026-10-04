@@ -1,8 +1,6 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+
 import "./Vegetable.css"; // same stylesheet, shared with the other pages
 import Navbar from "../components/Navabr";
-import { useCart } from "../context/CartContext";
 import ProductList from "../components/ProductList";
 
 function Stationary() {
