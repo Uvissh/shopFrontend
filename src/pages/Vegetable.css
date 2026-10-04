@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap");
+
+/* ---------- Colours & fonts ---------- */
+.veg-page {
+  --leaf: #2f6b3a;
+  --leaf-dark: #1d3f27;
+  --leaf-soft: #e6f0e3;
+  --tomato: #d8452b;
+  --ink: #1c2a20;
+  --muted: #5d6b61;
+  --paper: #f5f8f3;
+  --card: #ffffff;
+  --line: #dbe5d8;
+
+  font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  min-height: 100vh;
+  padding: 0 0 4rem;
+}
+
+/* ---------- Header ---------- */
+.veg-header {
+  background: var(--leaf-dark);
+  color: #fff;
+  padding: 3.5rem 1.5rem 4.5rem;
+  text-align: left;
+}
+
+.veg-header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.veg-title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6rem;
+}
+
+.veg-subtitle {
+  margin: 0;
+  max-width: 46ch;
+  color: #bcd3bf;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+/* ---------- Grid ---------- */
+.veg-grid {
+  max-width: 1180px;
+  margin: -2.5rem auto 0;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ---------- Card ---------- */
+.veg-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.veg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(29, 63, 39, 0.14);
+}
+
+.veg-img-wrap {
+  aspect-ratio: 4 / 3;
+  background: var(--leaf-soft);
+  overflow: hidden;
+}
+
+.veg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.veg-card:hover .veg-img {
+  transform: scale(1.05);
+}
+
+.veg-body {
+  padding: 1rem 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+}
+
+.veg-name {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.veg-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--line);
+}
+
+.veg-price {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--tomato);
+}
+
+.veg-weight {
+  background: var(--leaf-soft);
+  color: var(--leaf);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+}
+
+/* ---------- Loading / error / empty ---------- */
+.veg-status {
+  max-width: 1180px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+.veg-status.error {
+  color: var(--tomato);
+  font-weight: 500;
+}
+
+.veg-skeleton {
+  height: 300px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #e9f0e6 25%, #f5f8f3 50%, #e9f0e6 75%);
+  background-size: 200% 100%;
+  animation: veg-shimmer 1.4s infinite;
+}
+
+@keyframes veg-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* ---------- Accessibility & small screens ---------- */
+.veg-card:focus-within {
+  outline: 3px solid var(--leaf);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .veg-card,
+  .veg-img {
+    transition: none;
+  }
+  .veg-skeleton {
+    animation: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .veg-header {
+    padding: 2.5rem 1.2rem 4rem;
+  }
+  .veg-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  .veg-name {
+    font-size: 1.05rem;
+  }
+  .veg-price {
+    font-size: 1.15rem;
+  }
+}
+
+.add-button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 7px;
+  background: #2f6b3a;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-button:hover {
+  background: #1d3f27;
+  transform: translateY(-2px);
+}
+
+.add-button:active {
+  transform: translateY(0);
+}
